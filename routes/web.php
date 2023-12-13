@@ -1,8 +1,15 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CiriFisikController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HasilDiagnosaController;
+use App\Http\Controllers\HasilPerhitunganController;
+use App\Http\Controllers\JenisKelaminController;
 use App\Http\Controllers\LandingpageController;
+use App\Http\Controllers\SolusiStuntingController;
+use App\Http\Controllers\TinggiBadanController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +34,19 @@ Route::post('/auth/register', [AuthController::class, 'registerPost'])->name('au
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard']);
 });
+
+Route::post('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+// master data
+Route::resource('ciri-fisik', CiriFisikController::class);
+Route::resource('hasil-diagnosa', HasilDiagnosaController::class);
+Route::resource('jenis-kelamin', JenisKelaminController::class);
+Route::resource('solusi-stunting', SolusiStuntingController::class);
+Route::resource('tingg-badan', TinggiBadanController::class);
+
+// Diagnosa
+Route::resource('hasil-perhitungan', HasilPerhitunganController::class);
+Route::get('/riwayat', [HasilPerhitunganController::class, 'riwayat'])->name('hasil-perhitungan.riwayat');
+
+// manajemen user
+Route::resource('manajemen-pengguna', UserController::class);

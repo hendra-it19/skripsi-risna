@@ -8,6 +8,7 @@ class LandingpageController extends Controller
 {
     public function utama()
     {
-        return view('pages.landingpage.utama');
+        $judulHalaman = 'Utama';
+        return view('pages.landingpage.utama', compact('judulHalaman'));
     }
 }

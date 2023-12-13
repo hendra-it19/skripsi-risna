@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SDS Dashboard | Login</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('dashboardpage/assets/images/logos/favicon.png') }}" />
+    <title>SDS Auth | {{ $judulHalaman }}</title>
+    <link rel="shortcut icon" type="image/jpeg" href="{{ asset('logo.jpeg') }}" />
     <link rel="stylesheet" href="{{ asset('dashboardpage/assets/css/styles.min.css') }}" />
 </head>
 

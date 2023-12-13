@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Labsky - Laboratory HTML Website Template</title>
+    <title>SDS | {{ $judulHalaman }}</title>
+    <link rel="shortcut icon" type="image/jpeg" href="{{ asset('logo.jpeg') }}" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">

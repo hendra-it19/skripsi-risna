@@ -4,9 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SDS Dashboard | {{ $judulHalaman }}</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('dashboardpage/assets/images/logos/favicon.png') }}" />
+    <title>SDS | {{ $judulHalaman }}</title>
+    <link rel="shortcut icon" type="image/jpeg" href="{{ asset('logo.jpeg') }}" />
     <link rel="stylesheet" href="{{ asset('dashboardpage/assets/css/styles.min.css') }}" />
+    <link href="{{ asset('assets/datatables/datatables.min.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('assets/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/datatables/datatables.min.js') }}"></script>
 </head>
 
 <body>
@@ -17,20 +22,14 @@
         @include('layouts.dashboardpage.sidebar')
         <!--  Sidebar End -->
         <!--  Main wrapper -->
-        <div class="body-wrapper" style="background-color:rgb(244, 244, 244)">
+        <div class="body-wrapper">
             <!--  Header Start -->
             @include('layouts.dashboardpage.header')
             <!--  Header End -->
-            <div class="container-fluid" >
+            <div class="container-fluid">
                 <!--  Row 1 -->
 
                 @yield('pages')
-
-                <div class="py-6 px-6 text-center">
-                    <p class="mb-0 fs-4">Desain dan Pengembangan oleh <a href="#"
-                            class="pe-1 text-primary text-decoration-underline">Risna</a> Di distribusikan dari <a
-                            href="https://themewagon.com">Informatika Unidayan</a></p>
-                </div>
             </div>
         </div>
     </div>
