@@ -7,7 +7,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <h4 href="#">Sistem Diagnosa Stunting</h4>
+                {{-- <h4 href="#">Sistem Diagnosa Stunting</h4> --}}
             </li>
         </ul>
         <div class="navbar-collapse justify-content-end px-0" id="navbarNav">

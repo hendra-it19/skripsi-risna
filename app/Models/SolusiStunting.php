@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class SolusiStunting extends Model
 {
     use HasFactory;
+
+    protected $table = 'solusi_stunting';
 }

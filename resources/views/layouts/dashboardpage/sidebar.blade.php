@@ -41,7 +41,7 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('tingg-badan.index') }}" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('tinggi-badan.index') }}" aria-expanded="false">
                             <span>
                                 <i class="ti ti-chart-arrows-vertical"></i>
                             </span>

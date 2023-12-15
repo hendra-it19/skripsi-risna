@@ -42,7 +42,7 @@ Route::resource('ciri-fisik', CiriFisikController::class);
 Route::resource('hasil-diagnosa', HasilDiagnosaController::class);
 Route::resource('jenis-kelamin', JenisKelaminController::class);
 Route::resource('solusi-stunting', SolusiStuntingController::class);
-Route::resource('tingg-badan', TinggiBadanController::class);
+Route::resource('tinggi-badan', TinggiBadanController::class);
 
 // Diagnosa
 Route::resource('hasil-perhitungan', HasilPerhitunganController::class);

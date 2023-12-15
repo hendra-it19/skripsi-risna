@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HasilPerhitungan;
 use App\Models\JenisKelamin;
+use App\Models\TinggiBadan;
 use Illuminate\Http\Request;
 
 class JenisKelaminController extends Controller
@@ -33,8 +35,8 @@ class JenisKelaminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode' => ['required', 'unique:jenis_kelamins,kode'],
-            'jenis_kelamin' => ['required', 'in:laki-laki,perempuan', 'unique:jenis_kelamins,jenis_kelamin'],
+            'kode' => ['required', 'unique:jenis_kelamin,kode'],
+            'jenis_kelamin' => ['required', 'in:laki-laki,perempuan', 'unique:jenis_kelamin,jenis_kelamin'],
         ]);
         JenisKelamin::create([
             'kode' => $request->kode,
@@ -67,8 +69,8 @@ class JenisKelaminController extends Controller
     public function update(Request $request, JenisKelamin $jenisKelamin)
     {
         $request->validate([
-            'kode' => ['required', $request->kode == $jenisKelamin->kode ? '' : 'unique:jenis_kelamins,kode'],
-            'jenis_kelamin' => ['required', $request->jenisKelamin == $jenisKelamin->jenis_kelamin ? '' : 'unique:jenis_kelamins,jenis_kelamin'],
+            'kode' => ['required', $request->kode == $jenisKelamin->kode ? '' : 'unique:jenis_kelamin,kode'],
+            'jenis_kelamin' => ['required', $request->jenis_kelamin == $jenisKelamin->jenis_kelamin ? '' : 'unique:jenis_kelamin,jenis_kelamin'],
         ]);
         $jenisKelamin->update([
             'kode' => $request->kode,
@@ -83,9 +85,15 @@ class JenisKelaminController extends Controller
      */
     public function destroy(JenisKelamin $jenisKelamin)
     {
-        $jenisKelamin->delete();
-        $
-        return redirect()->route('jenis-kelamin.index')
-            ->with('success', 'Data berhasil dihapus!');
+        $tinggiBadan = TinggiBadan::where('jenis_kelamin', $jenisKelamin->id)->first();
+        $hasilPerhitungan = HasilPerhitungan::where('jenis_kelamin', $jenisKelamin->id)->first();
+        if (empty($hasilPerhitungan) && empty($tinggiBadan)) {
+            $jenisKelamin->delete();
+            return redirect()->route('jenis-kelamin.index')
+                ->with('success', 'Data berhasil dihapus!');
+        } else {
+            return redirect()->route('jenis-kelamin.index')
+                ->with('errors', 'Data sedang digunakan!');
+        }
     }
 }
