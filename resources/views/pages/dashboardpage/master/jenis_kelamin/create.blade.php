@@ -20,7 +20,7 @@
                     @csrf
                     @method('post')
                     <div class="row">
-                        <div class="form-group mb-3 col-6">
+                        <div class="form-group mb-3 col-12 col-md-6">
                             <label for="kode" class="form-label">Kode</label>
                             <input type="text" name="kode" id="kode"
                                 class="form-control
@@ -35,7 +35,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="form-group mb-3 col-6">
+                        <div class="form-group mb-3 col-12 col-md-6">
                             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                             <select name="jenis_kelamin" id="jenis_kelamin"
                                 class="form-select 

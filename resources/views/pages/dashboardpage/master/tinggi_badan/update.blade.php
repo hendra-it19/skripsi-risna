@@ -20,7 +20,7 @@
                     @csrf
                     @method('put')
                     <div class="row">
-                        <div class="form-group mb-3 col-6">
+                        <div class="form-group mb-3 col-12 col-md-6">
                             <label for="kode" class="form-label">Kode</label>
                             <input type="text" name="kode" id="kode"
                                 class="form-control
@@ -35,7 +35,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="form-group mb-3 col-6">
+                        <div class="form-group mb-3 col-12 col-md-6">
                             <label for="umur" class="form-label">Umur (bulan)</label>
                             <input type="number" name="umur" id="umur" min="1"
                                 class="form-control
@@ -50,7 +50,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="form-group mb-3 col-6">
+                        <div class="form-group mb-3 col-12 col-md-6">
                             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                             <select name="jenis_kelamin" id="jenis_kelamin"
                                 class="form-select 
@@ -70,7 +70,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="form-group mb-3 col-6">
+                        <div class="form-group mb-3 col-12 col-md-6">
                             <label for="tinggi_badan" class="form-label">Tinggi Badan (cm)</label>
                             <input type="number" name="tinggi_badan" id="tinggi_badan" min="1"
                                 class="form-control

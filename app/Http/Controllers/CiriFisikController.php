@@ -13,7 +13,9 @@ class CiriFisikController extends Controller
     public function index()
     {
         $judulHalaman = "Master - Ciri Fisik";
-        return view('pages.dashboardpage.master.ciri_fisik.index',compact('judulHalaman'));
+        $data = CiriFisik::latest('id')->get();
+        $no = 1;
+        return view('pages.dashboardpage.master.ciri_fisik.index', compact('judulHalaman','data','no'));
     }
 
     /**
@@ -21,7 +23,8 @@ class CiriFisikController extends Controller
      */
     public function create()
     {
-        //
+        $judulHalaman = "Master - Ciri Fisik";
+        return view('pages.dashboardpage.master.ciri_fisik.create', compact('judulHalaman'));
     }
 
     /**
@@ -29,7 +32,16 @@ class CiriFisikController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode' => ['required', 'string', 'unique:ciri_fisik,kode'],
+            'ciri_fisik' => ['required'],
+        ]);
+        CiriFisik::create([
+            'kode' => $request->kode,
+            'ciri_fisik' => $request->ciri_fisik,
+        ]);
+        return redirect()->route('ciri-fisik.index')
+            ->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -45,7 +57,8 @@ class CiriFisikController extends Controller
      */
     public function edit(CiriFisik $ciriFisik)
     {
-        //
+        $judulHalaman = 'Master - Ciri Fisik';
+        return view('pages.dashboardpage.master.ciri_fisik.update', compact('judulHalaman', 'ciriFisik'));
     }
 
     /**
@@ -53,7 +66,16 @@ class CiriFisikController extends Controller
      */
     public function update(Request $request, CiriFisik $ciriFisik)
     {
-        //
+        $request->validate([
+            'kode' => ['required', $request->kode == $ciriFisik->kode ? '' : 'unique:ciri_fisik,kode'],
+            'ciri_fisik' => ['required'],
+        ]);
+        $ciriFisik->update([
+            'kode' => $request->kode,
+            'ciri_fisik' => $request->ciri_fisik,
+        ]);
+        return redirect()->route('ciri-fisik.index')
+            ->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -61,6 +83,8 @@ class CiriFisikController extends Controller
      */
     public function destroy(CiriFisik $ciriFisik)
     {
-        //
+        $ciriFisik->delete();
+        return redirect()->route('ciri-fisik.index')
+            ->with('success', 'Data berhasil dihapus!');
     }
 }
