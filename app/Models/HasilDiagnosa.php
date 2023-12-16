@@ -10,4 +10,6 @@ class HasilDiagnosa extends Model
     use HasFactory;
 
     protected $table = 'hasil_diagnosa';
+
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 }

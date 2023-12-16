@@ -42,7 +42,6 @@
                                 is-invalid
                             @enderror">{{ old('ciri_fisik', $ciriFisik->ciri_fisik) }}</textarea>
                             @error('ciri_fisik')
-                                x
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

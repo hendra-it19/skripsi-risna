@@ -13,7 +13,9 @@ class HasilDiagnosaController extends Controller
     public function index()
     {
         $judulHalaman = 'Master - Hasil Diagnosa';
-        return view('pages.dashboardpage.master.hasil_diagnosa.index',compact('judulHalaman'));
+        $data = HasilDiagnosa::latest('id')->get();
+        $no = 1;
+        return view('pages.dashboardpage.master.hasil_diagnosa.index', compact('judulHalaman', 'no', 'data'));
     }
 
     /**
@@ -21,7 +23,8 @@ class HasilDiagnosaController extends Controller
      */
     public function create()
     {
-        //
+        $judulHalaman = 'Master - Hasil Diagnosa';
+        return view('pages.dashboardpage.master.hasil_diagnosa.create', compact('judulHalaman'));
     }
 
     /**
@@ -29,7 +32,16 @@ class HasilDiagnosaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode' => ['required', 'unique:hasil_diagnosa,kode','string','max:5'],
+            'hasil_diagnosa' => ['required', 'unique:hasil_diagnosa,hasil_diagnosa'],
+        ]);
+        HasilDiagnosa::create([
+            'kode' => $request->kode,
+            'hasil_diagnosa' => $request->hasil_diagnosa
+        ]);
+        return redirect()->route('hasil-diagnosa.index')
+            ->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -45,7 +57,8 @@ class HasilDiagnosaController extends Controller
      */
     public function edit(HasilDiagnosa $hasilDiagnosa)
     {
-        //
+        $judulHalaman = 'Master - Hasil Diagnosa';
+        return view('pages.dashboardpage.master.hasil_diagnosa.update', compact('judulHalaman', 'hasilDiagnosa'));
     }
 
     /**
@@ -53,7 +66,16 @@ class HasilDiagnosaController extends Controller
      */
     public function update(Request $request, HasilDiagnosa $hasilDiagnosa)
     {
-        //
+        $request->validate([
+            'kode' => [$request->kode == $hasilDiagnosa->kode ? '' : 'unique:hasil_diagnosa,kode', 'required','string','max:5'],
+            'hasil_diagnosa' => [$request->hasil_diagnosa == $hasilDiagnosa->hasil_diagnosa ? '' : 'unique:hasil_diagnosa,hasil_diagnosa', 'required'],
+        ]);
+        $hasilDiagnosa->update([
+            'kode' => $request->kode,
+            'hasil_diagnosa' => $request->hasil_diagnosa
+        ]);
+        return redirect()->route('hasil-diagnosa.index')
+            ->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -61,6 +83,8 @@ class HasilDiagnosaController extends Controller
      */
     public function destroy(HasilDiagnosa $hasilDiagnosa)
     {
-        //
+        $hasilDiagnosa->delete();
+        return redirect()->route('hasil-diagnosa.index')
+            ->with('success', 'Data berhasil dihapus!');
     }
 }
