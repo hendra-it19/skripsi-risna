@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group mb-3 col-12 col-md-6">
                             <label for="umur" class="form-label">Umur (bulan)</label>
-                            <input type="number" name="umur" id="umur" min="1"
+                            <input type="number" name="umur" id="umur" min="0"
                                 class="form-control
                             @error('umur')
                                 is-invalid
@@ -72,7 +72,7 @@
                         </div>
                         <div class="form-group mb-3 col-12 col-md-6">
                             <label for="tinggi_badan" class="form-label">Tinggi Badan (cm)</label>
-                            <input type="number" name="tinggi_badan" id="tinggi_badan" min="1"
+                            <input type="text" name="tinggi_badan" id="tinggi_badan"
                                 class="form-control
                             @error('tinggi_badan')
                                 is-invalid

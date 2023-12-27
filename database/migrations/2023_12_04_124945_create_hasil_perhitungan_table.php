@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('hasil_perhitungan', function (Blueprint $table) {
             $table->id();
             $table->string('nama', 50);
-            $table->foreignId('jenis_kelamin')->references('id')->on('jenis_kelamin');
-            $table->foreignId('tinggi_badan')->references('id')->on('tinggi_badan');
-            $table->foreignId('ciri_fisik')->references('id')->on('ciri_fisik');
-            $table->foreignId('hasil_diagnosa')->references('id')->on('hasil_diagnosa');
-            $table->foreignId('solusi_stunting')->references('id')->on('solusi_stunting');
+            $table->integer('umur');
+            $table->foreignId('jenis_kelamin')->nullable()->references('id')->on('jenis_kelamin');
+            $table->foreignId('tinggi_badan')->nullable()->references('id')->on('tinggi_badan');
+            $table->foreignId('ciri_fisik')->nullable()->references('id')->on('ciri_fisik');
+            $table->foreignId('hasil_diagnosa')->nullable()->references('id')->on('hasil_diagnosa');
+            $table->foreignId('solusi_stunting')->nullable()->references('id')->on('solusi_stunting');
             $table->timestamps();
         });
     }

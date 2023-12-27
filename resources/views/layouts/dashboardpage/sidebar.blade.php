@@ -33,7 +33,8 @@
                         <span class="hide-menu">Master Data</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('jenis-kelamin.index') }}" aria-expanded="false">
+                        <a class="sidebar-link @if ($judulHalaman == 'Master - Jenis Kelamin') active @endif"
+                            href="{{ route('jenis-kelamin.index') }}" aria-expanded="false">
                             <span>
                                 <i class="ti ti-gender-bigender"></i>
                             </span>
@@ -41,7 +42,8 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('tinggi-badan.index') }}" aria-expanded="false">
+                        <a class="sidebar-link @if ($judulHalaman == 'Master - Tinggi Badan') active @endif"
+                            href="{{ route('tinggi-badan.index') }}" aria-expanded="false">
                             <span>
                                 <i class="ti ti-chart-arrows-vertical"></i>
                             </span>
@@ -49,7 +51,8 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('ciri-fisik.index') }}" aria-expanded="false">
+                        <a class="sidebar-link @if ($judulHalaman == 'Master - Ciri Fisik') active @endif"
+                            href="{{ route('ciri-fisik.index') }}" aria-expanded="false">
                             <span>
                                 <i class="ti ti-stretching"></i>
                             </span>
@@ -57,7 +60,8 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('hasil-diagnosa.index') }}" aria-expanded="false">
+                        <a class="sidebar-link @if ($judulHalaman == 'Master - Hasil Diagnosa')  @endif"
+                            href="{{ route('hasil-diagnosa.index') }}" aria-expanded="false">
                             <span>
                                 <i class="ti ti-heart-rate-monitor"></i>
                             </span>
@@ -65,7 +69,8 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('solusi-stunting.index') }}" aria-expanded="false">
+                        <a class="sidebar-link @if ($judulHalaman == 'Master - Solusi Stunting') active @endif"
+                            href="{{ route('solusi-stunting.index') }}" aria-expanded="false">
                             <span>
                                 <i class="ti ti-stethoscope"></i>
                             </span>
@@ -79,7 +84,8 @@
                         <span class="hide-menu">Diagnosa</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('hasil-perhitungan.index') }}" aria-expanded="false">
+                        <a class="sidebar-link @if ($judulHalaman == 'Diagnosa - Input') active @endif"
+                            href="{{ route('hasil-perhitungan.create') }}" aria-expanded="false">
                             <span>
                                 <i class="ti ti-keyboard"></i>
                             </span>
@@ -87,7 +93,7 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('hasil-perhitungan.riwayat') }}" aria-expanded="false">
+                        <a class="sidebar-link @if ($judulHalaman == 'Diagnosa - Riwayat') active @endif" href="{{ route('hasil-perhitungan.index') }}" aria-expanded="false">
                             <span>
                                 <i class="ti ti-history"></i>
                             </span>
@@ -102,7 +108,7 @@
                         <span class="hide-menu">Manajemen</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('manajemen-pengguna.index')}}" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('manajemen-pengguna.index') }}" aria-expanded="false">
                             <span>
                                 <i class="ti ti-user"></i>
                             </span>

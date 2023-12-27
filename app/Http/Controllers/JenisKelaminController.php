@@ -15,7 +15,7 @@ class JenisKelaminController extends Controller
     public function index()
     {
         $judulHalaman = "Master - Jenis Kelamin";
-        $data =  JenisKelamin::latest('id')->get();
+        $data =  JenisKelamin::orderBy('created_at','ASC')->get();
         $no = 1;
         return view('pages.dashboardpage.master.jenis_kelamin.index', compact('judulHalaman', 'data', 'no'));
     }
@@ -35,7 +35,7 @@ class JenisKelaminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode' => ['required', 'unique:jenis_kelamin,kode'],
+            'kode' => ['required', 'unique:jenis_kelamin,kode', 'string', 'max:5'],
             'jenis_kelamin' => ['required', 'in:laki-laki,perempuan', 'unique:jenis_kelamin,jenis_kelamin'],
         ]);
         JenisKelamin::create([
@@ -69,7 +69,7 @@ class JenisKelaminController extends Controller
     public function update(Request $request, JenisKelamin $jenisKelamin)
     {
         $request->validate([
-            'kode' => ['required', $request->kode == $jenisKelamin->kode ? '' : 'unique:jenis_kelamin,kode'],
+            'kode' => ['required', $request->kode == $jenisKelamin->kode ? '' : 'unique:jenis_kelamin,kode', 'string', 'max:5'],
             'jenis_kelamin' => ['required', $request->jenis_kelamin == $jenisKelamin->jenis_kelamin ? '' : 'unique:jenis_kelamin,jenis_kelamin'],
         ]);
         $jenisKelamin->update([

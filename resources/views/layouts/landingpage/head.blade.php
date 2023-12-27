@@ -1,5 +1,3 @@
-
-
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +13,8 @@
 <link href="{{ asset('landingpage/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
 <!-- Customized Bootstrap Stylesheet -->
-<link href="{{ asset('landingpage/css/bootstrap.min.css') }}" rel="stylesheet">
+{{-- <link href="{{ asset('landingpage/css/bootstrap.min.css') }}" rel="stylesheet"> --}}
+<link rel="stylesheet" href="{{ asset('dashboardpage/assets/css/styles.min.css') }}" />
 
 <!-- Template Stylesheet -->
 <link href="{{ asset('landingpage/css/style.css') }}" rel="stylesheet">

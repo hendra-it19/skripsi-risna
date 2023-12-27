@@ -13,9 +13,9 @@ class CiriFisikController extends Controller
     public function index()
     {
         $judulHalaman = "Master - Ciri Fisik";
-        $data = CiriFisik::latest('id')->get();
+        $data = CiriFisik::orderBy('created_at', 'ASC')->get();
         $no = 1;
-        return view('pages.dashboardpage.master.ciri_fisik.index', compact('judulHalaman','data','no'));
+        return view('pages.dashboardpage.master.ciri_fisik.index', compact('judulHalaman', 'data', 'no'));
     }
 
     /**
@@ -33,7 +33,7 @@ class CiriFisikController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode' => ['required', 'string', 'unique:ciri_fisik,kode'],
+            'kode' => ['required', 'string', 'unique:ciri_fisik,kode', 'max:5'],
             'ciri_fisik' => ['required'],
         ]);
         CiriFisik::create([
@@ -67,7 +67,7 @@ class CiriFisikController extends Controller
     public function update(Request $request, CiriFisik $ciriFisik)
     {
         $request->validate([
-            'kode' => ['required', $request->kode == $ciriFisik->kode ? '' : 'unique:ciri_fisik,kode'],
+            'kode' => ['required', $request->kode == $ciriFisik->kode ? '' : 'unique:ciri_fisik,kode', 'string', 'max:5'],
             'ciri_fisik' => ['required'],
         ]);
         $ciriFisik->update([

@@ -13,15 +13,15 @@
 
 <body>
     <!-- Spinner Start -->
-    <div id="spinner"
+    {{-- <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
-    </div>
+    </div> --}}
     <!-- Spinner End -->
 
 
     <!-- Topbar Start -->
-    <div class="container-fluid py-2 d-none d-lg-flex">
+    {{-- <div class="container-fluid py-2 d-none d-lg-flex">
         <div class="container">
             <div class="d-flex justify-content-between">
                 <div>
@@ -36,7 +36,7 @@
                 </nav>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Topbar End -->
 
 

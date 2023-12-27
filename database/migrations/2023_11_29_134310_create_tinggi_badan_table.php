@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('kode', 5);
             $table->integer('umur');
-            $table->foreignId('jenis_kelamin')->references('id')->on('jenis_kelamin')->cascadeOnDelete();
-            $table->integer('tinggi_badan');
+            $table->foreignId('jenis_kelamin')->references('id')->on('jenis_kelamin');
+            $table->string('tinggi_badan', 20);
             $table->timestamps();
         });
     }

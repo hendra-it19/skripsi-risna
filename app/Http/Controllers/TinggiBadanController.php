@@ -14,7 +14,7 @@ class TinggiBadanController extends Controller
     public function index()
     {
         $judulHalaman = 'Master - Tinggi Badan';
-        $data = TinggiBadan::latest('id')->get();
+        $data = TinggiBadan::orderBy('created_at', 'ASC')->get();
         $no = 1;
         return view('pages.dashboardpage.master.tinggi_badan.index', compact('judulHalaman', 'data', 'no'));
     }
@@ -35,16 +35,16 @@ class TinggiBadanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode' => ['required', 'string', 'unique:tinggi_badan,kode'],
-            'umur' => ['required', 'numeric', 'min:1'],
+            'kode' => ['required', 'string', 'unique:tinggi_badan,kode', 'max:5'],
+            'umur' => ['required', 'numeric', 'min:0'],
             'jenis_kelamin' => ['required', 'exists:jenis_kelamin,id'],
-            'tinggi_badan' => ['required', 'numeric'],
+            'tinggi_badan' => ['required',],
         ]);
         TinggiBadan::create([
             'kode' => $request->kode,
             'umur' => $request->umur,
             'jenis_kelamin' => $request->jenis_kelamin,
-            'tinggi_badan' => $request->tinggi_badan
+            'tinggi_badan' => $request->tinggi_badan,
         ]);
         return redirect()->route('tinggi-badan.index')
             ->with('success', 'Data berhasil ditambahkan!');
@@ -74,16 +74,16 @@ class TinggiBadanController extends Controller
     public function update(Request $request, TinggiBadan $tinggiBadan)
     {
         $request->validate([
-            'kode' => ['required', $request->kode == $tinggiBadan->kode ? '' :  'unique:tinggi_badan,kode'],
-            'umur' => ['required', 'numeric', 'min:1'],
+            'kode' => ['required', $request->kode == $tinggiBadan->kode ? '' :  'unique:tinggi_badan,kode', 'string', 'max:5'],
+            'umur' => ['required', 'numeric', 'min:0'],
             'jenis_kelamin' => ['required', 'exists:jenis_kelamin,id'],
-            'tinggi_badan' => ['required', 'numeric', 'min:1']
+            'tinggi_badan' => ['required'],
         ]);
         $tinggiBadan->update([
             'kode' => $request->kode,
             'umur' => $request->umur,
             'jenis_kelamin' => $request->jenis_kelamin,
-            'tinggi_badan' => $request->tinggi_badan
+            'tinggi_badan' => $request->tinggi_badan,
         ]);
         return redirect()->route('tinggi-badan.index')
             ->with('success', 'Data berhasil diubah!');

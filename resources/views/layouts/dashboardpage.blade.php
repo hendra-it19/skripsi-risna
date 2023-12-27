@@ -12,6 +12,14 @@
     <script src="{{ asset('assets/datatables/pdfmake.min.js') }}"></script>
     <script src="{{ asset('assets/datatables/vfs_fonts.js') }}"></script>
     <script src="{{ asset('assets/datatables/datatables.min.js') }}"></script>
+    {{-- trix editor --}}
+    <link rel="stylesheet" href="{{ asset('trix-editor/trix.css') }}">
+    <script src="{{ asset('trix-editor/trix.js') }}"></script>
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,6 +44,7 @@
 
 
     @include('layouts.dashboardpage.script')
+    @yield('script')
 </body>
 
 </html>

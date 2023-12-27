@@ -18,4 +18,9 @@ class JenisKelamin extends Model
     {
         return $this->hasMany(TinggiBadan::class, 'jenis_kelamin', 'id');
     }
+
+    public function hasilPerhitungan(): HasMany
+    {
+        return $this->hasMany(HasilPerhitungan::class, 'jenis_kelamin', 'id');
+    }
 }

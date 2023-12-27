@@ -13,7 +13,7 @@ class HasilDiagnosaController extends Controller
     public function index()
     {
         $judulHalaman = 'Master - Hasil Diagnosa';
-        $data = HasilDiagnosa::latest('id')->get();
+        $data = HasilDiagnosa::orderBy('created_at','ASC')->get();
         $no = 1;
         return view('pages.dashboardpage.master.hasil_diagnosa.index', compact('judulHalaman', 'no', 'data'));
     }
@@ -33,7 +33,7 @@ class HasilDiagnosaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode' => ['required', 'unique:hasil_diagnosa,kode','string','max:5'],
+            'kode' => ['required', 'unique:hasil_diagnosa,kode', 'string', 'max:5'],
             'hasil_diagnosa' => ['required', 'unique:hasil_diagnosa,hasil_diagnosa'],
         ]);
         HasilDiagnosa::create([
@@ -67,7 +67,7 @@ class HasilDiagnosaController extends Controller
     public function update(Request $request, HasilDiagnosa $hasilDiagnosa)
     {
         $request->validate([
-            'kode' => [$request->kode == $hasilDiagnosa->kode ? '' : 'unique:hasil_diagnosa,kode', 'required','string','max:5'],
+            'kode' => [$request->kode == $hasilDiagnosa->kode ? '' : 'unique:hasil_diagnosa,kode', 'required', 'string', 'max:5'],
             'hasil_diagnosa' => [$request->hasil_diagnosa == $hasilDiagnosa->hasil_diagnosa ? '' : 'unique:hasil_diagnosa,hasil_diagnosa', 'required'],
         ]);
         $hasilDiagnosa->update([

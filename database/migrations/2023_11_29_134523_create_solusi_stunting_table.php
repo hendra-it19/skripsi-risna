@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('solusi_stunting', function (Blueprint $table) {
             $table->id();
-            $table->integer('umur');
+            $table->enum('jenis_saran', ['pengobatan', 'pencegahan']);
+            $table->integer('umur_minimal')->nullable();
+            $table->integer('umur_maksimal')->nullable();
             $table->text('solusi_stunting');
             $table->timestamps();
         });

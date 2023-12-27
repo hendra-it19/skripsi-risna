@@ -46,7 +46,7 @@ Route::resource('tinggi-badan', TinggiBadanController::class);
 
 // Diagnosa
 Route::resource('hasil-perhitungan', HasilPerhitunganController::class);
-Route::get('/riwayat', [HasilPerhitunganController::class, 'riwayat'])->name('hasil-perhitungan.riwayat');
+Route::get('/user/hasil-perhitungan/get-data', [HasilPerhitunganController::class, 'getData']);
 
 // manajemen user
 Route::resource('manajemen-pengguna', UserController::class);
