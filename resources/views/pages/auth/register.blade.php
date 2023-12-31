@@ -9,34 +9,43 @@
             <input type="text" class="form-control @error('nama')
                     is-invalid 
             @enderror"
-                id="nama" aria-describedby="textHelp" name="nama" value="{{old('nama')}}">
+                id="nama" aria-describedby="textHelp" name="nama" value="{{ old('nama') }}">
             @error('nama')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
             @enderror
         </div>
+
         <div class="mb-3">
             <label for="email" class="form-label">Alamat Email</label>
             <input type="email" class="form-control @error('email')
                 is-invalid
             @enderror"
-                id="email" aria-describedby="emailHelp" name="email" value="{{old('email')}}">
+                id="email" aria-describedby="emailHelp" name="email" value="{{ old('email') }}">
             @error('email')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
             @enderror
         </div>
-        <div class="mb-4">
+
+        <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control @error('password')
-                is-invalid
+            <input type="password"
+                class="form-control @error('password')
+                    is-invalid 
             @enderror"
-                id="password" name="password" value="{{old('password')}}">
+                id="password"name="password" value="{{ old('password') }}">
+            @error('password')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
+
         <div class="mb-4">
-            <label for="password" class="form-label">Konfirmasi Password</label>
+            <label for="konfirmasi_password" class="form-label">Konfirmasi Password</label>
             <input type="password"
                 class="form-control @error('konfirmasi_password')
                 is-invalid
@@ -48,10 +57,15 @@
                 </div>
             @enderror
         </div>
+
         <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Daftar akun</button>
         <div class="d-flex align-items-center justify-content-center">
             <p class="fs-4 mb-0 fw-bold">Sudah punya akun?</p>
             <a class="text-primary fw-bold ms-2" href="{{ url('/auth/login') }}">Masuk akun</a>
+        </div>
+        <hr>
+        <div class="text-center mt-3">
+            <small>Copyright&copy; 2024 By Risna</small>
         </div>
     </form>
 @endsection

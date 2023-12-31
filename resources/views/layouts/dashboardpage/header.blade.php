@@ -7,7 +7,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                {{-- <h4 href="#">Sistem Diagnosa Stunting</h4> --}}
+                <h2 href="#" class="text-primary">Sistem Diagnosa Stunting</h2>
             </li>
         </ul>
         <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
@@ -21,20 +21,22 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                         <div class="message-body">
-                            <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                            <a href="{{ route('auth.editprofile') }}"
+                                class="d-flex align-items-center gap-2 dropdown-item">
                                 <i class="ti ti-user fs-6"></i>
-                                <p class="mb-0 fs-3">My Profile</p>
+                                <p class="mb-0 fs-3">Akun</p>
                             </a>
-                            <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                <i class="ti ti-mail fs-6"></i>
-                                <p class="mb-0 fs-3">My Account</p>
-                            </a>
-                            <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                            <a href="{{route('hasil-perhitungan.index')}}" class="d-flex align-items-center gap-2 dropdown-item">
                                 <i class="ti ti-list-check fs-6"></i>
-                                <p class="mb-0 fs-3">My Task</p>
+                                <p class="mb-0 fs-3">Riwayat</p>
                             </a>
-                            <a href="{{ route('auth.logout') }}"
-                                class="btn btn-outline-danger mx-3 mt-2 d-block">Logout</a>
+                            <a href="javascript:void(0)" class="dropdown-item">
+                                <form action="{{ route('auth.logout') }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger" style="width: 100%"
+                                        onclick="return confirm('Yakin ingin keluar?')">Logout</button>
+                                </form>
+                            </a>
                         </div>
                     </div>
                 </li>

@@ -26,27 +26,35 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingpageController::class, 'utama']);
 
 
-Route::get('/auth/login', [AuthController::class, 'loginPage']);
+Route::get('/auth/login', [AuthController::class, 'loginPage'])->name('login')->middleware('guest');
 Route::post('/auth/login', [AuthController::class, 'loginPost'])->name('auth.login');
-Route::get('/auth/register', [AuthController::class, 'registerPage']);
+Route::get('/auth/register', [AuthController::class, 'registerPage'])->name('register');
 Route::post('/auth/register', [AuthController::class, 'registerPost'])->name('auth.register');
 
-Route::prefix('dashboard')->group(function () {
-    Route::get('/', [DashboardController::class, 'dashboard']);
+
+
+Route::middleware('auth')->group(function () {
+
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/', [DashboardController::class, 'dashboard']);
+    });
+
+    Route::get('/auth/profile', [AuthController::class, 'edit'])->name('auth.editprofile');
+    Route::put('/auth/profile/{id}', [AuthController::class, 'update'])->name('auth.updateProfile');
+
+    Route::post('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+    // master data
+    Route::resource('ciri-fisik', CiriFisikController::class);
+    Route::resource('hasil-diagnosa', HasilDiagnosaController::class);
+    Route::resource('jenis-kelamin', JenisKelaminController::class);
+    Route::resource('solusi-stunting', SolusiStuntingController::class);
+    Route::resource('tinggi-badan', TinggiBadanController::class);
+
+    // Diagnosa
+    Route::resource('hasil-perhitungan', HasilPerhitunganController::class);
+    Route::get('/user/hasil-perhitungan/get-data', [HasilPerhitunganController::class, 'getData']);
+
+    // manajemen user
+    Route::resource('manajemen-pengguna', UserController::class);
 });
-
-Route::post('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
-
-// master data
-Route::resource('ciri-fisik', CiriFisikController::class);
-Route::resource('hasil-diagnosa', HasilDiagnosaController::class);
-Route::resource('jenis-kelamin', JenisKelaminController::class);
-Route::resource('solusi-stunting', SolusiStuntingController::class);
-Route::resource('tinggi-badan', TinggiBadanController::class);
-
-// Diagnosa
-Route::resource('hasil-perhitungan', HasilPerhitunganController::class);
-Route::get('/user/hasil-perhitungan/get-data', [HasilPerhitunganController::class, 'getData']);
-
-// manajemen user
-Route::resource('manajemen-pengguna', UserController::class);

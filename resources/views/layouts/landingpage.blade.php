@@ -4,10 +4,12 @@
 <head>
     <meta charset="utf-8">
     <title>SDS | {{ $judulHalaman }}</title>
-    <link rel="shortcut icon" type="image/jpeg" href="{{ asset('logo.jpeg') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('logo.png') }}" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="diagnosa stunting, risna, tugas akhir, stunting, balita" name="keywords">
+    <meta
+        content="Sistem Diagnosa Stunting (SDS) merupakan web app yang dapat digunakan untuk melakukan diagnosa sementara pada anak yang memiliki beberapa ciri-ciri stunting."
+        name="description">
     @include('layouts.landingpage.head')
 </head>
 
@@ -47,16 +49,19 @@
                 <div class="d-flex">
                     <i class="bi bi-telephone-inbound fs-2"></i>
                     <div class="ms-3">
-                        <h5 class="text-white mb-0">Call Now</h5>
-                        <span>+012 345 6789</span>
+                        <h5 class="text-white mb-0">Hubungi Sekarang</h5>
+                        <span>0852-9323-8822 </span>
                     </div>
                 </div>
-                <a href="index.html" class="h1 text-white mb-0">Lab<span class="text-dark">sky</span></a>
+                <a href="{{url('/')}}" class="h1 text-white mb-0">
+                <img src="{{asset('logo.png')}}" width="60" alt="">
+                <span>SDS</span>
+                </a>
                 <div class="d-flex">
                     <i class="bi bi-envelope fs-2"></i>
                     <div class="ms-3">
-                        <h5 class="text-white mb-0">Mail Now</h5>
-                        <span>info@example.com</span>
+                        <h5 class="text-white mb-0">Email Sekarang</h5>
+                        <span>risna@gmail.com</span>
                     </div>
                 </div>
             </div>

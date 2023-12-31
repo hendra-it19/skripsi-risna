@@ -38,4 +38,9 @@ class HasilPerhitungan extends Model
     {
         return $this->belongsTo(SolusiStunting::class, 'solusi_stunting', 'id');
     }
+
+    public function penginput(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user', 'id');
+    }
 }

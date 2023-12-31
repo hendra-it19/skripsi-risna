@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SDS | {{ $judulHalaman }}</title>
-    <link rel="shortcut icon" type="image/jpeg" href="{{ asset('logo.jpeg') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('dashboardpage/assets/css/styles.min.css') }}" />
     <link href="{{ asset('assets/datatables/datatables.min.css') }}" rel="stylesheet">
 

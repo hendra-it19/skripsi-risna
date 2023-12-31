@@ -57,5 +57,9 @@
             <p class="fs-4 mb-0 fw-bold">Pengguna baru?</p>
             <a class="text-primary fw-bold ms-2" href="{{ url('/auth/register') }}">Buat akun</a>
         </div>
+        <hr>
+        <div class="text-center mt-3">
+            <small>Copyright&copy; 2024 By Risna</small>
+        </div>
     </form>
 @endsection

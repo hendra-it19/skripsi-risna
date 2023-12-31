@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('hasil_perhitungan', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user')->references('id')->on('users');
             $table->string('nama', 50);
             $table->integer('umur');
             $table->foreignId('jenis_kelamin')->nullable()->references('id')->on('jenis_kelamin');

@@ -18,7 +18,12 @@ class HasilPerhitunganController extends Controller
     public function index()
     {
         $judulHalaman = "Diagnosa - Riwayat";
-        $data = HasilPerhitungan::all();
+        if (auth()->user()->role == 'admin') {
+            $data = HasilPerhitungan::all();
+        } else {
+            $data = HasilPerhitungan::where('user', auth()->user()->id)->get();
+        }
+
         $no = 1;
         return view('pages.dashboardpage.diagnosa.riwayat', compact('judulHalaman', 'data', 'no'));
     }
@@ -81,9 +86,7 @@ class HasilPerhitunganController extends Controller
                 ) {
                     $hasilPerhitungan = 'D1';
                 }
-            }
-
-            if (
+            } else if (
                 $tinggiBadan == 'B2' ||
                 $tinggiBadan == 'B4' ||
                 $tinggiBadan == 'B6' ||
@@ -204,6 +207,7 @@ class HasilPerhitunganController extends Controller
             'ciri_fisik' => $request->ciri_fisik,
             'hasil_diagnosa' => $hasilDiagnosa->id,
             'solusi_stunting' => $solusiStunting->id,
+            'user' => auth()->user()->id,
         ]);
 
         $data = HasilPerhitungan::latest('created_at')->first();

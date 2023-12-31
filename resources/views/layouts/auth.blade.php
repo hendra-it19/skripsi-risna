@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SDS Auth | {{ $judulHalaman }}</title>
-    <link rel="shortcut icon" type="image/jpeg" href="{{ asset('logo.jpeg') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('dashboardpage/assets/css/styles.min.css') }}" />
 </head>
 
@@ -22,8 +22,7 @@
                             <div class="card-body">
                                 <a href="{{ url('/') }}"
                                     class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="{{ asset('dashboardpage/assets/images/logos/dark-logo.svg') }}"
-                                        width="180" alt="">
+                                    <img src="{{ asset('logo.png') }}" width="60" alt="">
                                 </a>
                                 @yield('pages')
                             </div>

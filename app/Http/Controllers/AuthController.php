@@ -37,16 +37,16 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        $user = User::where('email', '=', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
 
         $remember = ($request->ingat_saya == "1") ? true : false;
 
-        if ($user && Hash::check($request->password, $user->password)) {
+        if (!empty($user) && Hash::check($request->password, $user->password)) {
             Auth::loginUsingId($user->id, $remember);
-            
-        } else {
-            return redirect()->back()->with('error_login', 'Email atau password anda salah!');
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard');
         }
+        return redirect()->back()->with('error_login', 'Email atau password anda salah!');
     }
 
     /**
@@ -66,33 +66,75 @@ class AuthController extends Controller
         } else {
             $role = 'admin';
         }
+        $password = Hash::make($request->password);
         User::create([
             'nama' => $request->nama,
             'email' => $request->email,
-            'password' => Hash::make($request->passsword),
+            'password' => $password,
             'role' => $role,
         ]);
         return redirect()->route('auth.login')->with('success', 'Registrasi berhasil, silahkan masuk menggunakan akun anda!');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit()
     {
-        //
+        $judulHalaman = "Profile";
+        $user = auth()->user();
+        return view('pages.dashboardpage.profile.update', compact('judulHalaman', 'user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        if (empty($request->password)) {
+            $request->validate([
+                'nama' => ['required', 'string'],
+                'email' => ['required', 'email', ($request->email == $user->email ? '' : 'unique:users,email')],
+                'alamat' => ['string'],
+                'nomor_handphone' => ['string', 'min:10', 'max:16'],
+            ]);
+            $user->update([
+                'nama' => $request->nama,
+                'email' => $request->email,
+                'alamat' => $request->alamat,
+                'nomor_handphone' => $request->nomor_handphone
+            ]);
+        } else {
+            $request->validate([
+                'nama' => ['required', 'string'],
+                'email' => ['required', 'email', ($request->email == $user->email ? '' : 'unique:users,email')],
+                'password' => ['required', 'min:8', 'string'],
+                'konfirmasi_password' => ['required', 'same:password'],
+                'alamat' => ['string'],
+                'nomor_handphone' => ['string', 'min:10', 'max:16'],
+            ]);
+            $user->update([
+                'nama' => $request->nama,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'alamat' => $request->alamat,
+                'nomor_handphone' => $request->nomor_handphone
+            ]);
+        }
+        return redirect()->route('auth.editprofile')
+            ->with('success', 'Akun berhasil diubah!');
     }
 
     /**

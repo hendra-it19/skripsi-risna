@@ -33,6 +33,7 @@
                         <th>Umur (bulan)</th>
                         <th>Tinggi Badan (cm)</th>
                         <th>Ciri Fisik</th>
+                        <th>Penginput</th>
                         <th>Aksi</th>
                     </thead>
                     <tbody>
@@ -40,10 +41,11 @@
                         @foreach ($data as $row)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $row->nama}}</td>
+                                <td>{{ $row->nama }}</td>
                                 <td>{{ $row->umur }}</td>
                                 <td>{{ $row->tinggiBadan->tinggi_badan }}</td>
-                                <td>{{$row->ciriFisik->ciri_fisik}}</td>
+                                <td>{{ $row->ciriFisik->ciri_fisik }}</td>
+                                <td>{{ $row->penginput->nama }}</td>
                                 <td>
                                     <form action="{{ route('hasil-perhitungan.destroy', $row->id) }}" method="post"
                                         class="d-inline">
