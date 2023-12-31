@@ -26,7 +26,7 @@ class HasilPerhitungan extends Model
 
     public function ciriFisik(): BelongsTo
     {
-        return $this->belongsTo(ciriFisik::class, 'ciri_fisik', 'id');
+        return $this->belongsTo(CiriFisik::class, 'ciri_fisik', 'id');
     }
 
     public function hasilDiagnosa(): BelongsTo
