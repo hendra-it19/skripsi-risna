@@ -77,6 +77,7 @@ class HasilPerhitunganController extends Controller
                 if (
                     $ciriFisik == 'C1' ||
                     $ciriFisik == 'C2' ||
+                    $ciriFisik == 'C3' ||
                     $ciriFisik == 'C4' ||
                     $ciriFisik == 'C5' ||
                     $ciriFisik == 'C6' ||
@@ -108,6 +109,7 @@ class HasilPerhitunganController extends Controller
                 if (
                     $ciriFisik == 'C1' ||
                     $ciriFisik == 'C2' ||
+                    $ciriFisik == 'C3' ||
                     $ciriFisik == 'C4' ||
                     $ciriFisik == 'C5' ||
                     $ciriFisik == 'C6' ||
@@ -141,6 +143,7 @@ class HasilPerhitunganController extends Controller
                 if (
                     $ciriFisik == 'C1' ||
                     $ciriFisik == 'C2' ||
+                    $ciriFisik == 'C3' ||
                     $ciriFisik == 'C4' ||
                     $ciriFisik == 'C5' ||
                     $ciriFisik == 'C6' ||
@@ -174,6 +177,7 @@ class HasilPerhitunganController extends Controller
                 if (
                     $ciriFisik == 'C1' ||
                     $ciriFisik == 'C2' ||
+                    $ciriFisik == 'C3' ||
                     $ciriFisik == 'C4' ||
                     $ciriFisik == 'C5' ||
                     $ciriFisik == 'C6' ||
